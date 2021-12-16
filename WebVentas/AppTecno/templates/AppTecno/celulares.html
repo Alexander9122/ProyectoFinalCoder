@@ -1,0 +1,33 @@
+{%extends "AppTecno/base.html"%}
+
+{%load static%}
+
+{%block head%}
+
+<h1 class="display-4 fw-bolder">Celulares</h1>
+<p class="lead fw-normal text-white-50 mb-0">Registro, Busqueda y Modificaciones</p>
+
+{%endblock%}
+
+{%block contenido%}
+    
+    {% if fomularioCelular.errors %}
+
+    <p style="color: red;">ERROR</p>
+
+    {%endif%}
+
+    <form action="/AppTecno/celulares", method="post">{% csrf_token %}
+
+        
+        <table>
+
+        {{ formularioCelular.as_table }}
+        
+        </table>
+        
+        <input type="submit" value="Registro">
+
+    </form>
+
+{%endblock%}
