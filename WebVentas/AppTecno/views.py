@@ -92,3 +92,21 @@ def televisores(request):
 
     return render(request, 'AppTecno/televisores.html', {"formularioTelevisores":formularioTelevisores})
     
+def leerLaptops (request):
+
+    laptops = Laptops.objects.all()
+
+    contexto = {"laptops":laptops}
+
+    return render (request, "AppTecno/leerLaptops.html", contexto)
+
+def eliminaLaptop (request, numero_para_borrar):
+
+    laptopBorrar = Laptops.objects.get(id=numero_para_borrar)
+    laptopBorrar.delete()
+
+    laptops = Laptops.objects.all() 
+
+    contexto = {"laptops":laptops}
+
+    return render(request, "AppTecno/leerLaptops.html", contexto)

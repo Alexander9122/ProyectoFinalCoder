@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls.conf import include
+from WebVentas import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.inicio, name="Inicio"),
     path('AppTecno/',include('AppTecno.urls')),
 ]

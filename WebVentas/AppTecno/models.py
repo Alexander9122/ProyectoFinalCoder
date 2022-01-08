@@ -11,7 +11,7 @@ class Laptops(models.Model):
 
     def __str__(self):
 
-        return f"MARCA: {self.marca} PULGADAS: {self.pulgadas} PROCESADOR: {self.procesador} RAM: {self.ram} PRECIO:{self.precio}"
+        return f"ID:{self.id} MARCA:{self.marca} PULGADAS:{self.pulgadas} PROCESADOR:{self.procesador} RAM:{self.ram} PRECIO:{self.precio}"
 
 class Celulares(models.Model):
 
@@ -23,7 +23,7 @@ class Celulares(models.Model):
 
     def __str__(self):
 
-        return f"MARCA: {self.marca} COMPANIA: {self.compania} CONECTIVIDAD: {self.conectividad} MEMORIA: {self.memoria} PRECIO:{self.precio}"
+        return f"ID:{self.id} MARCA: {self.marca} COMPANIA: {self.compania} CONECTIVIDAD: {self.conectividad} MEMORIA: {self.memoria} PRECIO:{self.precio}"
 
 class Televisores(models.Model):
     
@@ -34,4 +34,4 @@ class Televisores(models.Model):
 
     def __str__(self):
 
-        return f"MARCA: {self.marca} PULGADAS: {self.pulgadas} RESOLUCION: {self.resolusion} PRECIO:{self.precio}"
+        return f"ID:{self.id} MARCA: {self.marca} PULGADAS: {self.pulgadas} RESOLUCION: {self.resolusion} PRECIO:{self.precio}"

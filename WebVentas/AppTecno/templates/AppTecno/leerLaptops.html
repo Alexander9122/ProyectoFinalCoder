@@ -1,0 +1,26 @@
+{%extends "AppTecno/base.html"%}
+
+{%load static%}
+
+{%block head%}
+
+<h1 class="display-4 fw-bolder">Laptops</h1>
+<p class="lead fw-normal text-white-50 mb-0">Registrar, Leer, Editar y Eliminar</p>
+
+{%endblock%}
+
+{%block contenido%}
+    
+    {% for l in laptops %}
+
+        <li>{{l}}</li>
+
+        <button>
+
+            <a href="{% url 'EliminarLaptop' l.id %}">Eliminar</a>
+
+        </button>
+    
+    {% endfor %}
+
+{%endblock%}
