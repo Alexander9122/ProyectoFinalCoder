@@ -1,0 +1,25 @@
+{%extends "AppInicio/base.html"%}
+
+{%load static%}
+
+{%block menu%}
+
+
+<li><a class="dropdown-item" href="{% url 'Laptops' %}">Laptops</a></li>
+<li><a class="dropdown-item" href="{% url 'LeerCelulares' %}">Celulares</a></li>
+<li><a class="dropdown-item" href="{% url 'LeerTelevisores' %}">Televisores</a></li>
+
+{%endblock%}
+
+{%block head%}
+
+<h1 class="display-4 fw-bolder">Tecnologia</h1>
+<p class="lead fw-normal text-white-50 mb-0">Laptops, Celulares y Televisores</p>
+
+{%endblock%}
+
+{%block contenido%}
+
+   <h3>{{mensaje}}   </h3>
+
+{%endblock%}

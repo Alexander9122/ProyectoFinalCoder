@@ -1,0 +1,31 @@
+{%extends "AppInicio/base.html"%}
+
+{%load static%}
+
+{%block dep%}
+
+<a class="navbar-brand" href="#!">Nosotros</a>
+
+{%endblock%}
+
+{%block menu%}
+
+
+<li><a class="dropdown-item" href="{% url 'LaptopRegistro' %}">Hogar</a></li>
+<li><a class="dropdown-item" href="{% url 'Tecnologia' %}">Tecnologia</a></li>
+<li><a class="dropdown-item" href="{% url 'TelevisoresRegistro' %}">Ropa</a></li>
+
+{%endblock%}
+
+{%block head%}
+
+<h1 class="display-4 fw-bolder">Mega Market</h1>
+<p class="lead fw-normal text-white-50 mb-0">Hogar, Tecnologia y Ropa</p>
+
+{%endblock%}
+
+{%block contenido%}
+
+   
+
+{%endblock%}

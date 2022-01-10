@@ -4,6 +4,7 @@
 
 {%block menu%}
 
+
 <li><a class="dropdown-item" href="{% url 'LeerLaptops' %}">Laptops</a></li>
 <li><a class="dropdown-item" href="{% url 'LeerCelulares' %}">Celulares</a></li>
 <li><a class="dropdown-item" href="{% url 'LeerTelevisores' %}">Televisores</a></li>
@@ -12,13 +13,13 @@
 
 {%block head%}
 
-<h1 class="display-4 fw-bolder">Laptops</h1>
+<h1 class="display-4 fw-bolder">Celulares</h1>
 <p class="lead fw-normal text-white-50 mb-0">Registrar, Leer, Editar y Eliminar</p>
 
 {%endblock%}
 
 {%block contenido%}
-    <form action="/AppTecno/buscarLaptop/" method="GET">
+    <form action="/AppTecno/buscarCelular/" method="GET">
         <input type="text" name="marca" id="marca">
 
         <input type="submit" value="Busqueda Por Marca">
@@ -26,27 +27,20 @@
     <h3>
         <button type="button" class="btn btn-link">
 
-        <a href="{% url 'New' %}">Nuevo Registro</a>
+        <a href="{% url 'CelularesRegistro' %}">Nuevo Registro</a>
 
         </button>
     </h3>
-    {% for l in laptops %}
+    {% for l in celulares %}
 
         <li>{{l}}</li>
 
         <button>
 
-            <a href="{% url 'Delete' l.id %}">Eliminar</a>
+            <a href="{% url 'EliminarCelular' l.id %}">Eliminar</a>
 
         </button>
-        
-        <button>
-
-            <a href="{% url 'Edit' l.id %}">Editar</a>
-
-        </button>
-
-
+    
     {% endfor %}
     
 {%endblock%}

@@ -30,19 +30,19 @@
 
         </button>
     </h3>
-    {% for l in laptops %}
+    {% for laptop in object_list %}
 
-        <li>{{l}}</li>
+        <li>{{laptop}}</li>
 
         <button>
 
-            <a href="{% url 'Delete' l.id %}">Eliminar</a>
+            <a href="{% url 'Delete' laptop.id %}">Eliminar</a>
 
         </button>
         
         <button>
 
-            <a href="{% url 'Edit' l.id %}">Editar</a>
+            <a href="{% url 'Edit' laptop.id %}">Editar</a>
 
         </button>
 
