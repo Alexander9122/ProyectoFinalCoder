@@ -1,0 +1,24 @@
+{% extends 'AppInicio/base.html' %}
+{% load static %}
+{% block contenido %}
+
+
+<form action="/AppHogar/electroForm" method="POST"  > {% csrf_token %}
+
+    <p>Fomulario para cargar Electrodomesticos</p>
+
+    <table>
+    {{miFormulario.as_table}}
+    </table>
+
+
+    
+
+    <input type="submit" value=" ENVIAR">
+
+
+
+</form>
+
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'AppInicio/base.html' %}
+{% load static %}
+{% block contenido %}
+
+
+<form action="/AppHogar/blancoForm" method="POST"  > {% csrf_token %}
+
+    <table>
+    {{miFormulario.as_table}}
+    </table>
+
+
+    
+
+    <input type="submit" value=" ENVIAR">
+
+
+
+</form>
+
+
+{% endblock %}

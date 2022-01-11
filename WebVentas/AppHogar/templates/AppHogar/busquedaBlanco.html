@@ -1,0 +1,20 @@
+{% extends 'AppInicio/base.html' %}
+{% load static %}
+{% block contenido %}
+
+<h1>BUSQUEDA BLANCO</h1>
+
+
+<form action="/AppHogar/buscar/" method="GET">
+
+
+
+    <input type="text" name="descripcion" id="descripcion" >
+
+    <input type="submit" value="BUSCAR">
+
+
+
+</form>
+
+{% endblock %}

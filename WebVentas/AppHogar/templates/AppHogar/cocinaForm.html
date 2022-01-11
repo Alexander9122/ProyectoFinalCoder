@@ -1,0 +1,24 @@
+{% extends 'AppInicio/base.html' %}
+{% load static %}
+{% block contenido %}
+
+
+<form action="/AppHogar/cocinaForm" method="POST"  > {% csrf_token %}
+
+    <p>Fomulario para cargar cocinas</p>
+
+    <table>
+    {{miFormulario.as_table}}
+    </table>
+
+
+    
+
+    <input type="submit" value=" ENVIAR">
+
+
+
+</form>
+
+
+{% endblock %}

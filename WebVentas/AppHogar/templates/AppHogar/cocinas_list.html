@@ -1,0 +1,32 @@
+{% extends 'AppInicio/base.html' %}
+{% load static %}
+
+{% block contenido %}
+<h1> Cocinas de la base de datos </h1>
+
+    {%for cocina in object_list %}
+    <li>
+
+
+    <p>NOMBRE: {{cocina.marca}}</p>
+
+    <p>
+        <a href="{% url 'Detail' cocina.id %}">DETALLES</a>
+        <a href="{% url 'Edit' cocina.id %}">EDITAR</a>
+        <a href="{% url 'Delete' cocina.id %}">BORRAR</a>
+
+
+
+
+    </p>
+       
+       
+
+    {%endfor%}
+
+    <a href="/AppHogar/blancoForm ">Agregar blanco</a>
+
+    </li>   
+
+{% endblock %}
+
