@@ -9,7 +9,7 @@ urlpatterns = [
     
     #URL para el inicio de la APP y para la clase Hombre, Mujer y Niños
 
-    path('inicio', views.inicio, name="Inicio"),
+    path('ropa', views.inicio, name="Ropa"),
     path('hombre', views.hombre, name="Hombre"),
     path('mujer', views.mujer, name="Mujer"),
     path('niños', views.niños, name="Niños"),

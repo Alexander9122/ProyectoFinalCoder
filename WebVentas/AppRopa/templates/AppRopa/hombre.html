@@ -1,7 +1,19 @@
-{%extends "AppRopa/base.html"%}
+{%extends "AppInicio/base.html"%}
 
 {%load static%}
+{%block menu%}
 
+<li><hr class="dropdown-divider"/><b>Departamentos</b></li>
+<li><a class="dropdown-item" href="{% url 'LeerRopaHombre' %}">Hombres</a></li>
+<li><a class="dropdown-item" href="{% url 'BusquedaRopaHombre' %}">Busqueda</a></li>
+<li><hr class="dropdown-divider"></li>
+<li><a class="dropdown-item" href="{% url 'LeerRopaMujer' %}">Mujeres</a></li>
+<li><a class="dropdown-item" href="{% url 'BusquedaRopaMujer' %}">Busqueda</a></li>
+<li><hr class="dropdown-divider"></li>
+<li><a class="dropdown-item" href="{% url 'LeerRopaNiños' %}">Niños</a></li>
+<li><a class="dropdown-item" href="{% url 'BusquedaRopaNiños' %}">Busqueda</a></li>
+
+{%endblock%}
     {%block head%}
 
         <h1 class="display-4 fw-bolder">Hombre</h1>

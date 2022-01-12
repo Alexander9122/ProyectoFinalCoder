@@ -1,6 +1,7 @@
 {%extends "AppInicio/base.html"%}
 
 {%load static%}
+
 {%block menu%}
 
 <li><hr class="dropdown-divider"/><b>Departamentos</b></li>
@@ -14,36 +15,16 @@
 <li><a class="dropdown-item" href="{% url 'BusquedaRopaNiños' %}">Busqueda</a></li>
 
 {%endblock%}
+
     {%block head%}
 
-        <h1 class="display-4 fw-bolder">Busqueda de Ropa</h1>
+        <h1 class="display-4 fw-bolder">Ropa</h1>
+        <p class="lead fw-normal text-white-50 mb-0">Hombre, Mujer, Niños</p>
 
     {%endblock%}
 
     {%block contenido%}
 
-        <h1>Ropa para Mujer</h1>
+   
 
-        {% if mujer %}
-
-            <ul>
-                
-            {% for mujer in mujer %}
-
-            <li>Talle:  {{mujer.talle}}</li>
-            <li>Marca:  {{mujer.marca}}</li>
-            <li>Color:  {{mujer.color}}</li>
-            <li>Precio: {{mujer.precio}}</li>
-
-            {% endfor %}
-
-            </ul>
-
-
-        {% endif %}
-
-        {%endblock%}
-        
-
-
-
+    {%endblock%}

@@ -7,7 +7,9 @@ from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def hogar(request):
     return render(request, 'AppHogar/hogar.html')
 
@@ -74,7 +76,7 @@ def electrodomesticosForm(request):
             informacion = miFormulario.cleaned_data
             electro_insta = Electrodomesticos( tipo = informacion["tipo"],
                                                marca = informacion["marca"],
-                                               descripcion  = informacion["descripcion "],
+                                               descripcion  = informacion["descripcion"],
                                                modelo = informacion["modelo"],
                                                color=informacion["color"],  
                                                voltage=informacion["voltage"])

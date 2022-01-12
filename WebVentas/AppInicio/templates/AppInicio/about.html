@@ -4,7 +4,6 @@
 
 {%block dep%}
 
-
 {%endblock%}
 
 {%block menu%}
@@ -19,21 +18,23 @@
 {%block head%}
 
 <h1 class="display-4 fw-bolder">Mega Market</h1>
-<p class="lead fw-normal text-white-50 mb-0">Hogar, Tecnologia y Ropa</p>
+<p class="lead fw-normal text-white-50 mb-0">Tienda en linea</p>
 
 {%endblock%}
 
 {%block contenido%}
-    
-    <form action="" method="POST">
-        
-        {% csrf_token %}
-        
-        <table>
-        {{miFormulario.as_table}}
-        </table>
-        
-        <input type="submit" value="Modificar">
-    </form>
+
+<h2>Descripcion</h2>
+
+<p>Somos una empresa de ventas online, con 3 departamentos: Hogar, Tecnologia y Ropa</p>
+
+<h2>Nosotros</h2>
+
+<p>En cada uno de nuestros departamentos tenemos a un especialista.</p>
+<ul>
+    <li>Hogar : Fererido</li>
+    <li>Tecnologia : Jorge</li>
+    <li>Ropa : Estaban</li>
+</ul>
 
 {%endblock%}

@@ -5,14 +5,15 @@ from django.http import HttpResponse
 from AppRopa.models import Hombre, Mujer, Niños
 from AppRopa.forms import HombreFormulario, MujerFormulario, NiñosFormulario
 
-
+from django.contrib.auth.decorators import login_required
 
 #Aca se crean las vistas de la pagina Web
 
 #Primer vista
+@login_required
 def inicio(request):
 
-    return render(request, 'AppRopa/inicio.html')
+    return render(request, 'AppRopa/ropa.html')
 
 
 def hombre(request):
@@ -50,7 +51,7 @@ def hombreFormulario(request):
 
             hombreInsta.save() #Este save guarda los datos ingresados en la base de datos
 
-            return render(request, 'AppRopa/inicio.html')
+            return render(request, 'AppRopa/ropa.html')
 
     else:
 
@@ -79,7 +80,7 @@ def mujerFormulario(request):
 
             mujerInsta.save() #Este save guarda los datos ingresados en la base de datos
 
-            return render(request, 'AppRopa/inicio.html')
+            return render(request, 'AppRopa/ropa.html')
 
     else:
 
@@ -108,7 +109,7 @@ def niñosFormulario(request):
 
             niñosInsta.save() #Este save guarda los datos ingresados en la base de datos
 
-            return render(request, 'AppRopa/inicio.html')
+            return render(request, 'AppRopa/ropa.html')
 
     else:
 
@@ -279,7 +280,7 @@ def editarRopaHombre(request, numero_para_editar):
 
             ropaH.save() #guarda los datos en la base de datos
 
-            return render(request, 'AppRopa/inicio.html')
+            return render(request, 'AppRopa/ropa.html')
 
     else:
 
@@ -306,7 +307,7 @@ def editarRopaMujer(request, numero_para_editar):
 
             ropaM.save() #guarda los datos en la base de datos
 
-            return render(request, 'AppRopa/inicio.html')
+            return render(request, 'AppRopa/ropa.html')
 
     else:
 
@@ -333,7 +334,7 @@ def editarRopaNiños(request, numero_para_editar):
 
             ropaN.save() #guarda los datos en la base de datos
 
-            return render(request, 'AppRopa/inicio.html')
+            return render(request, 'AppRopa/ropa.html')
 
     else:
 

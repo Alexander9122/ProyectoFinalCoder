@@ -4,19 +4,14 @@
 
 {%block dep%}
 
-<a class="navbar-brand" href="#!">About</a>
-
 {%endblock%}
 
 {%block menu%}
-<li><hr class="dropdown-divider"/><b>Usuario</b></li>
-<li><a class="dropdown-item" href="{% url 'Login' %}">Login</a></li>
-<li><a class="dropdown-item" href="{% url 'EditarPerfil' %}">Editar Usuario</a></li>
-<li><a class="dropdown-item" href="{% url 'Logout' %}">Logout</a></li>
+
 <li><hr class="dropdown-divider"/><b>Departamentos</b></li>
-<li><a class="dropdown-item" href="#!">Hogar</a></li>
+<li><a class="dropdown-item" href="{% url 'Hogar' %}">Hogar</a></li>
 <li><a class="dropdown-item" href="{% url 'Tecnologia' %}">Tecnologia</a></li>
-<li><a class="dropdown-item" href="#!">Ropa</a></li>
+<li><a class="dropdown-item" href="{% url 'Ropa' %}">Ropa</a></li>
 
 {%endblock%}
 

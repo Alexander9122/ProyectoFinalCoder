@@ -4,15 +4,11 @@
 
 {%block dep%}
 
-<a class="navbar-brand" href="#!">About</a>
 
 {%endblock%}
 
 {%block menu%}
-<li><hr class="dropdown-divider"/><b>Usuario</b></li>
-<li><a class="dropdown-item" href="{% url 'Login' %}">Login</a></li>
-<li><a class="dropdown-item" href="{% url 'EditarPerfil' %}">Editar Usuario</a></li>
-<li><a class="dropdown-item" href="{% url 'Logout' %}">Logout</a></li>
+
 <li><hr class="dropdown-divider"/><b>Productos</b></li>
 <li><a class="dropdown-item" href="{% url 'Laptops' %}">Laptops</a></li>
 <li><a class="dropdown-item" href="{% url 'LeerCelulares' %}">Celulares</a></li>

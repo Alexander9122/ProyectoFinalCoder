@@ -14,6 +14,10 @@ def inicio(request):
 
     return render (request, 'AppInicio/inicio.html')
 
+def about(request):
+
+    return render (request, 'AppInicio/about.html')
+
 #Login Inicio de Sesion -------------------------------------------------------------------------------------
 def login_request(request):
 

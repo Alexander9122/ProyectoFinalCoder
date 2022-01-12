@@ -21,6 +21,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
                 <a class="navbar-brand" href="{% url 'Inicio' %}">Inicio</a>
+                <a class="navbar-brand" href="{% url 'About' %}">About</a>
                 {% block dep %}
                     
                 {% endblock %}
@@ -30,8 +31,12 @@
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!"></a></li>
                         <li class="nav-item"><a class="nav-link" href="#!"></a></li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Productos</a>
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Menu</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><hr class="dropdown-divider"/><b>Usuario</b></li>
+                            <li><a class="dropdown-item" href="{% url 'Login' %}">Login</a></li>
+                            <li><a class="dropdown-item" href="{% url 'EditarPerfil' %}">Editar Usuario</a></li>
+                            <li><a class="dropdown-item" href="{% url 'Logout' %}">Logout</a></li>
                             {% block menu %}
                     
                             {% endblock %}
