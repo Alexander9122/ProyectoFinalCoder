@@ -1,9 +1,36 @@
-{% extends 'AppInicio/base.html' %}
-{% load static %}
-{% block contenido %}
+{%extends "AppInicio/base.html"%}
+
+{%load static%}
+
+{%block dep%}
+
+<a class="navbar-brand" href="#!">Nosotros</a>
+
+{%endblock%}
+
+{%block menu%}
+<li><a class="dropdown-item" href="{% url 'Blanco' %}">Blancos</a></li>
+<li><a class="dropdown-item" href="{% url 'Cocinas' %}">Cocinas</a></li>
+<li><a class="dropdown-item" href="{% url 'Electrodomesticos' %}">Electrodomesticos</a></li>
+{%endblock%}
+
+{%block head%}
+
+<h1 class="display-6 fw-bolder">Mega Market</h1>
+<h1 class="display-1 fw-bolder">Editar blancos</h1>
 
 
-<form action="" method="POST"  > {% csrf_token %}
+{%endblock%}
+
+{%block contenido%}
+{% if miFormulario.errors %}
+
+    <p style="color: red;">ERROR</p>
+
+    {%endif%}
+
+
+<form action="AppHogar/editarBlanco" method="POST"  > {% csrf_token %}
 
     <table>
     {{miFormulario.as_table}}
@@ -12,11 +39,10 @@
 
     
 
-    <input type="submit" value=" ENVIAR">
+    <input type="submit" value=" EDITAR">
 
 
 
 </form>
 
-
-{% endblock %}
+{%endblock%}

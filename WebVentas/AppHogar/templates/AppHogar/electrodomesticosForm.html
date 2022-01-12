@@ -17,13 +17,32 @@
 {%block head%}
 
 <h1 class="display-6 fw-bolder">Mega Market</h1>
-<h1 class="display-1 fw-bolder">Blancos</h1>
+<h1 class="display-1 fw-bolder">Formulario para cargar electrodomesticos</h1>
 
 
 {%endblock%}
 
 {%block contenido%}
+{% if miFormulario.errors %}
 
-<a class="dropdown-item" href="{% url 'LeerBlancos' %}">Lista blancos</a>
+    <p style="color: red;">ERROR</p>
+
+    {%endif%}
+
+
+<form action="/AppHogar/electrodomesticosForm" method="POST"  > {% csrf_token %}
+
+    <table>
+    {{miFormulario.as_table}}
+    </table>
+
+
+    
+
+    <input type="submit" value=" ENVIAR">
+
+
+
+</form>
 
 {%endblock%}

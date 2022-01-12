@@ -1,16 +1,17 @@
-from typing import List
 from django.db.models import fields
-from django.shortcuts import redirect, render
+from django.shortcuts import render
 from django.http import HttpResponse
 from AppHogar.models import *
 from AppHogar.forms import *
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.urls import reverse_lazy
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
 
-# Create your views here.
+def hogar(request):
+    return render(request, 'AppHogar/hogar.html')
+
+
 def blanco(request):
     return render(request, 'AppHogar/blanco.html')
 
@@ -18,15 +19,13 @@ def blanco(request):
 def cocinas(request):
     return render(request, 'AppHogar/cocinas.html')
 
-
 def electrodomesticos(request):
     return render(request, 'AppHogar/electrodomesticos.html')
 
-    
-# Formulario para cargar blancos
+#AGREGAR BLANCO
+
 def blancoForm(request):
     if request.method == "POST":
-
         miFormulario = BlancoFormulario(request.POST)
 
         if miFormulario.is_valid():
@@ -47,81 +46,89 @@ def blancoForm(request):
     return render (request, 'AppHogar/blancoForm.html ',{'miFormulario':miFormulario})
 
 
-
 #Formulario para cargar cocinas 
-def cocinaForm(request):
+
+def cocinasForm(request):
     if request.method == "POST":
+        
         miFormulario = CocinaFormulario(request.POST)
 
-        if miFormulario.is_valid():
+        if  miFormulario.is_valid():
             informacion = miFormulario.cleaned_data
             cocina_insta = Cocinas(marca = informacion["marca"], color=informacion["color"], canti_hornallas=informacion["canti_hornallas"])
             cocina_insta.save()
 
-            return render(request,'AppHogar/cocinas.html')
+            return render(request,'AppHogar/hogar.html')
     else:
             miFormulario = CocinaFormulario()
-    return render(request,'AppHogar/cocinaForm.html', {'miFormulario':miFormulario})
+    return render(request,'AppHogar/cocinasForm.html', {'miFormulario':miFormulario})
 
+#FORMULARIO ELECTRODOMESTICOS 
 
-
-#Formulario para cargar electrodomesticos
-def electroForm(request):
+def electrodomesticosForm(request):
     if request.method == "POST":
+        
         miFormulario = ElectrodomesticosFormulario(request.POST)
 
-        if miFormulario.is_valid():
+        if  miFormulario.is_valid():
             informacion = miFormulario.cleaned_data
-            electro_insta = Electrodomesticos(marca=informacion["marca"], descripcion=informacion["descripcion"],modelo=informacion["modelo"], color=informacion["color"], voltage=informacion["voltage"])
+            electro_insta = Electrodomesticos( tipo = informacion["tipo"],
+                                               marca = informacion["marca"],
+                                               descripcion  = informacion["descripcion "],
+                                               modelo = informacion["modelo"],
+                                               color=informacion["color"],  
+                                               voltage=informacion["voltage"])
             electro_insta.save()
 
-            return render(request,'AppHogar/electrodomesticos.html')
+            return render(request,'AppHogar/hogar.html')
     else:
             miFormulario = ElectrodomesticosFormulario()
-    return render(request,'AppHogar/electroForm.html', {'miFormulario':miFormulario})
-
-
-def busquedaBlanco(request):
-    return render(request, 'Apphogar/busquedaBlanco.html')
-
-
-def buscar(request):
-
-    if request.GET["descripcion"]:
-
-        descripcion = request.GET["descripcion"]
-        blanco =Blanco.objects.filter(descripcion__icontains=descripcion)
-        return render(request,'AppHogar/resultadoBusqueda.html', {'blanco':blanco, 'descripcion':descripcion} )
-
-       
-
-    else:
-        respuesta = 'ingresar informacion '   
-
-    return HttpResponse(respuesta)
+    return render(request,'AppHogar/electrodomesticosForm.html', {'miFormulario':miFormulario})
 
 
 
-# Leer blancos
-def leerBlanco(request):
-
+#FUNCION LEER
+#BLANCOS
+def leerBlancos(request):
     blancos = Blanco.objects.all()
-    dir ={'blancos': blancos} # contexto
-    return render(request, 'AppHogar/leerBlanco.html', dir)
- 
- #Eliminar blancos
-def eliminarBlanco(request, descripcionBorrar):
 
-    blancoBorrar = Blanco.objects.get(descripcion=descripcionBorrar)
+    dir =  {'blancos': blancos} #contexto
+
+    return render(request, 'AppHogar/leerBlancos.html', dir)
+#COCINAS
+def leerCocinas(request):
+    cocinas = Cocinas.objects.all()
+
+    dir =  {'cocinas': cocinas} #contexto
+
+    return render(request, 'AppHogar/leerCocinas.html', dir)    
+#ELECTRODOMESTICOS
+def leerElectro(request):
+    electrodomesticos = Electrodomesticos.objects.all()
+
+    dir =  {'electrodomesticos': electrodomesticos} #contexto
+
+    return render(request, 'AppHogar/leerElectrodomesticos.html', dir)   
+
+#ELIMINAR BLANCO
+def eliminarBlanco(request, nombreBorrar):
+
+    blancoBorrar = Blanco.objects.get(descripcion=nombreBorrar)
     blancoBorrar.delete()
 
-    blanco = Blanco.objects.all()
+    blancos = Blanco.objects.all()
 
-    return render(request, 'AppHogar/leerBlanco.html', {"blanco":blanco})
+    dir =  {'blancos': blancos} #contexto
+
+    return render(request, 'AppHogar/leerBlancos.html', dir)
+
+
+
 
 
 #Editar blanco
 def editarBlanco(request, descripcionEditar):
+
     blanco = Blanco.objects.get(descripcion=descripcionEditar)
 
     if request.method == "POST":
@@ -131,13 +138,12 @@ def editarBlanco(request, descripcionEditar):
         if miFormulario.is_valid():
             
             informacion = miFormulario.cleaned_data
-
              
-            blanco.marca=informacion["marca"]
-            blanco.descripcion=informacion["descripcion"]
-            blanco.color=informacion["color"]
-            blanco.plazas=informacion["plazas"]
-            blanco.precio=informacion["precio"]
+            blanco.marca=informacion['marca']
+            blanco.descripcion=informacion['descripcion']
+            blanco.color=informacion['color']
+            blanco.plazas=informacion['plazas']
+            blanco.precio=informacion['precio']
 
             blanco.save()
 
@@ -148,44 +154,3 @@ def editarBlanco(request, descripcionEditar):
         miFormulario = BlancoFormulario(initial={'marca':blanco.marca,'descripcion':blanco.descripcion,'color':blanco.color,'plazas':blanco.plazas,'precio':blanco.precio })
     
     return render (request, 'AppHogar/editarBlanco.html ',{'miFormulario':miFormulario, 'descripcionEditar':descripcionEditar })
-
-
-
-
-#CBV ----> CRUD ----> cocinas
-
-#LEER
-
-class CocinaList(ListView):
-    model = Cocinas
-    template_name = "AppHogar/cocinas_list.html"
-
-#DETALLE cocinas
-
-class CocinaDetalle(DetailView):
-    model = Cocinas
-    template_name = "AppHogar/cocinas_detalle.html"
-
-
-#CREAR cocinas
-
-class CocinaCreacion(CreateView):
-    model = Cocinas
-    success_url ="../cocinas/list"
-    fields = ['marca', 'color','canti_hornallas' ]
-
-#MODIFICAR cocinas
-
-class CocinasUpdate(UpdateView):
-    model = Cocinas
-    success_url ="../cocina/list"
-    fields = ['marca', 'color','canti_hornallas' ]
-
-#BORRAR cocinas
-
-class CocinasDelete(DeleteView):
-    model = Cocinas
-    success_url ="../cocina/list"
-    
-
-

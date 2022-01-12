@@ -17,13 +17,21 @@
 {%block head%}
 
 <h1 class="display-6 fw-bolder">Mega Market</h1>
-<h1 class="display-1 fw-bolder">Blancos</h1>
-
+<h1 class="display-1 fw-bolder">Electrodomesticos </h1>
+<p class="lead fw-normal text-white-50 mb-0">Blancos, Cocinas y Electrodomesticos</p>
 
 {%endblock%}
 
 {%block contenido%}
+    
 
-<a class="dropdown-item" href="{% url 'LeerBlancos' %}">Lista blancos</a>
+   
+{%for e in electrodomesticos %}
+<li>{{ e }}</li>
+
+{% endfor %}    
+
+    <a href="{% url 'ElectrodomesticosForm' %}">Agregar Electrodomesticos </a>
+
 
 {%endblock%}
