@@ -1,0 +1,21 @@
+{%extends "AppRopa/base.html"%}
+
+{%load static%}
+
+    {%block head%}
+
+        <h1 class="display-4 fw-bolder">Busqueda de ropa para Niños</h1>
+
+    {%endblock%}
+
+    {%block contenido%}
+
+        <form action="/AppRopa/buscarRopaN/" method="GET">
+
+            <input type="text" name="marca" id="marca">
+
+            <input type="submit" value="Buscar">
+
+        </form>
+
+    {%endblock%}

@@ -1,0 +1,27 @@
+{%extends "AppRopa/base.html"%}
+
+{%load static%}
+
+    {%block head%}
+
+        <h1 class="display-4 fw-bolder">Formulario de Ropa Mujer</h1>
+
+    {%endblock%}
+
+    
+
+    {%block contenido%}
+
+        <form action="" method="POST"> {% csrf_token %}
+
+            <table>
+
+                {{ miFormulario.as_table }}
+
+            </table>
+
+            <input type="submit" value="Enviar">    
+
+        </form>
+
+    {%endblock%}

@@ -1,0 +1,37 @@
+{%extends "AppRopa/base.html"%}
+
+{%load static%}
+
+    {%block head%}
+
+        <h1 class="display-4 fw-bolder">Busqueda de Ropa</h1>
+
+    {%endblock%}
+
+    {%block contenido%}
+
+        <h1>Ropa para Hombre</h1>
+
+        {% if hombre %}
+
+            <ul>
+                
+            {% for hombre in hombre %}
+
+            <li>Talle:  {{hombre.talle}}</li>
+            <li>Marca:  {{hombre.marca}}</li>
+            <li>Color:  {{hombre.color}}</li>
+            <li>Precio: {{hombre.precio}}</li>
+
+            {% endfor %}
+
+            </ul>
+
+
+        {% endif %}
+
+        {%endblock%}
+        
+
+
+

@@ -1,0 +1,32 @@
+{%extends "AppRopa/base.html"%}
+
+{%load static%}
+
+    {%block head%}
+
+        <h1 class="display-4 fw-bolder">Ropa Mujer de la Base de datos</h1> 
+
+    {%endblock%}
+
+    {%block contenido%}
+
+        {% for r in mujer %}
+
+            <li> ROPA: {{r}}  </li>
+            <button>    
+
+                <a href="{% url 'EliminarRopaMujer' r.id %}"> Eliminar </a>
+
+            </button>
+
+            <button>
+
+                <a href="{% url 'EditarRopaMujer' r.id %}"> Editar </a>
+
+            </button>
+
+        {% endfor %}
+
+        <a href="/AppRopa/mujerFormulario">Agregar otra Ropa</a>
+
+    {%endblock%}

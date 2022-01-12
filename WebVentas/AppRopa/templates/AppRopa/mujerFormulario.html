@@ -1,0 +1,31 @@
+{%extends "AppRopa/base.html"%}
+
+{%load static%}
+
+    {%block head%}
+
+        <h1 class="display-4 fw-bolder">Formulario de Mujer</h1>
+
+    {%endblock%}
+
+    {%block contenido%}
+
+    {% if miFormulario.errors %}
+
+        <p style="color: red;">Error al ingresar los datos</p>
+
+    {% endif %}
+
+        <form action="/AppRopa/mujerFormulario" method="POST"> {% csrf_token %}
+
+            <table>
+
+                {{ miFormulario.as_table }}
+
+            </table>
+
+            <input type="submit" value="Enviar">
+
+        </form>
+
+    {%endblock%}
