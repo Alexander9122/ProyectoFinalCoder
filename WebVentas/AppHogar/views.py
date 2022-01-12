@@ -149,7 +149,7 @@ def editarBlanco(request, descripcionEditar):
 
             blanco.save()
 
-            return render(request, 'AppHogar/leerBlanco.html')
+            return render(request, 'AppHogar/leerBlancos.html')
 
     else:
 
