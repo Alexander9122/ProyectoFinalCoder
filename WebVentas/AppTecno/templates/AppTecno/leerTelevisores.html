@@ -2,10 +2,19 @@
 
 {%load static%}
 
+{%block dep%}
+
+<a class="navbar-brand" href="#!">About</a>
+
+{%endblock%}
+
 {%block menu%}
-
-
-<li><a class="dropdown-item" href="{% url 'LeerLaptops' %}">Laptops</a></li>
+<li><hr class="dropdown-divider"/><b>Usuario</b></li>
+<li><a class="dropdown-item" href="{% url 'Login' %}">Login</a></li>
+<li><a class="dropdown-item" href="{% url 'EditarPerfil' %}">Editar Usuario</a></li>
+<li><a class="dropdown-item" href="{% url 'Logout' %}">Logout</a></li>
+<li><hr class="dropdown-divider"/><b>Productos</b></li>
+<li><a class="dropdown-item" href="{% url 'Laptops' %}">Laptops</a></li>
 <li><a class="dropdown-item" href="{% url 'LeerCelulares' %}">Celulares</a></li>
 <li><a class="dropdown-item" href="{% url 'LeerTelevisores' %}">Televisores</a></li>
 
@@ -38,6 +47,12 @@
         <button>
 
             <a href="{% url 'EliminarTelevisor' l.id %}">Eliminar</a>
+
+        </button>
+
+        <button>
+
+            <a href="{% url 'EditTel' l.id %}">Editar</a>
 
         </button>
     

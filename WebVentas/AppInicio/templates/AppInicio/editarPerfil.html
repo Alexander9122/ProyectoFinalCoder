@@ -28,7 +28,16 @@
 {%endblock%}
 
 {%block contenido%}
-
-<h3>{{mensaje}}</h3>
+    
+    <form action="" method="POST">
+        
+        {% csrf_token %}
+        
+        <table>
+        {{miFormulario.as_table}}
+        </table>
+        
+        <input type="submit" value="Modificar">
+    </form>
 
 {%endblock%}

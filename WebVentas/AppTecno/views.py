@@ -9,100 +9,39 @@ from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-#login 
 
-def login_request(request):
+#inicio de la app-------------------------------------------------------------
+@login_required
+def tecnologia(request):
 
-    if request.method == "POST":
+    return render (request, 'AppTecno/tecnologia.html')
 
-        form = AuthenticationForm(request, data = request.POST)
+#Vistas laptop-----------------------------------------------------------------
 
-        if form.is_valid():
-
-            usuario = form.cleaned_data.get('username')
-            contra = form.cleaned_data.get('password')
-
-            user = authenticate(username = usuario, password = contra)
-
-            if user is not None:
-
-                login(request, user)
-
-                return render(request, "AppTecno/tecnologia.html", {"mensaje": f"Bienvenido {usuario}"})
-            
-            else:
-                
-                return render(request, "AppTecno/tecnologia.html", {"mensaje":"Error, datos incorrectos"})
-        
-        else:
-
-            return render(request, "AppTecno/tecnologia.html", {"mensaje":"Error, fromulario erroneo"})
+#Leer--------------------------------------------------------------------------
+def leerLaptops (request):
     
-    form = AuthenticationForm()
+    laptops = Laptops.objects.all()
 
-    return render(request, "AppTecno/login.html", {'form':form})
+    contexto = {"laptops":laptops}
 
-def register(request):
+    return render (request, "AppTecno/leerLaptops.html", contexto)
 
-    if request.method == 'POST':
-
-        form=UserRegisterForm(request.POST)
-
-        if form.is_valid():
-
-            username = form.cleaned_data['username']
-            form.save()
-            return render(request,"AppTecno/tecnologia.html", {"mensaje":"Usuario Creado"})
-        
-    else:
-
-        form=UserRegisterForm()
-        
-    return render(request,"AppTecno/registro.html", {"form":form})
-
-#CRUD CBV
-#leer
 class Laptoplist(ListView):
 
     model = Laptops
     template_name = "AppTecno/laptop_list.html"
 
-#detalle
+#detalle(no se aplico en el proyecto)------------------------------------------------------------------------
 class LaptopDetalle(DetailView):
 
     model= Laptops
     template_name="AppTecno/laptop_detalle.html"
 
-#crear
-class LaptopCreacion(CreateView):
-
-    model= Laptops
-    success_url="/AppTecno/laptops"
-    template_name="AppTecno/laptops_form_insert.html"
-    fields = ['marca','pulgadas', 'procesador', 'ram', 'precio']
-
-#Editar 
-class LaptopModificar(UpdateView):
-
-    model=Laptops
-    success_url="../laptops"
-    fields = ["marca","pulgadas", "procesador", "ram", "precio"]
-
-#Eliminar
-class LaptopEliminar(DeleteView):
-
-    model=Laptops
-    success_url="../laptops"
-
-#proceso largo
-def tecnologia(request):
-
-    return render (request, 'AppTecno/tecnologia.html')
-
+#crear--------------------------------------------------------------------------
 def laptopRegistro(request):
 
     if request.method == "POST":
@@ -127,32 +66,20 @@ def laptopRegistro(request):
 
             return render(request, "AppTecno/leerLaptops.html", contexto)
 
-
     else:
 
         formularioLaptop = LaptopsFormulario()
 
     return render(request, 'AppTecno/laptopRegistro.html', {"formularioLaptop":formularioLaptop})
 
-def leerLaptops (request):
-    
-    laptops = Laptops.objects.all()
+class LaptopCreacion(CreateView):
 
-    contexto = {"laptops":laptops}
+    model= Laptops
+    success_url="/AppTecno/laptops"
+    template_name="AppTecno/laptops_form_insert.html"
+    fields = ['marca','pulgadas', 'procesador', 'ram', 'precio']
 
-    return render (request, "AppTecno/leerLaptops.html", contexto)
-
-def eliminaLaptop (request, numero_para_borrar):
-
-    laptopBorrar = Laptops.objects.get(id=numero_para_borrar)
-    laptopBorrar.delete()
-
-    laptops = Laptops.objects.all() 
-
-    contexto = {"laptops":laptops}
-
-    return render(request, "AppTecno/leerLaptops.html", contexto)
-
+#Editar---------------------------------------------------------------------- 
 def modificarLaptop(request, numero_para_editar):
 
     laptop = Laptops.objects.get(id=numero_para_editar)
@@ -179,13 +106,36 @@ def modificarLaptop(request, numero_para_editar):
 
             return render(request, "AppTecno/leerLaptops.html", contexto)
 
-
     else:
 
         formularioLaptop = LaptopsFormulario(initial={"marca":laptop.marca, "pulgadas":laptop.pulgadas, "procesador":laptop.procesador, "ram":laptop.ram, "precio":laptop.precio})
 
     return render(request, 'AppTecno/modificarLaptop.html', {"formularioLaptop":formularioLaptop, "numero_para_editar":numero_para_editar})
 
+class LaptopModificar(UpdateView):
+
+    model=Laptops
+    success_url="../laptops"
+    fields = ["marca","pulgadas", "procesador", "ram", "precio"]
+
+#Eliminar-------------------------------------------------------------------------------
+def eliminaLaptop (request, numero_para_borrar):
+
+    laptopBorrar = Laptops.objects.get(id=numero_para_borrar)
+    laptopBorrar.delete()
+
+    laptops = Laptops.objects.all() 
+
+    contexto = {"laptops":laptops}
+
+    return render(request, "AppTecno/leerLaptops.html", contexto)
+
+class LaptopEliminar(DeleteView):
+
+    model=Laptops
+    success_url="../laptops"
+
+#Buscar---------------------------------------------------------------------------------
 def buscarLaptop(request):
 
     if request.GET["marca"]:
@@ -204,7 +154,18 @@ def buscarLaptop(request):
 
     return render(request, "AppTecno/leerLaptops.html", contexto)
 
+#Vistas Celulares---------------------------------------------------------
 
+#Leer---------------------------------------------------------------
+def leerCelulares (request):
+    
+    celulares = Celulares.objects.all()
+
+    contexto = {"celulares":celulares}
+
+    return render (request, "AppTecno/leerCelulares.html", contexto)
+
+#Crear-------------------------------------------------------------
 def celularesRegistro(request):
 
     if request.method == "POST":
@@ -235,15 +196,14 @@ def celularesRegistro(request):
 
     return render(request, 'AppTecno/celularesRegistro.html', {"formularioCelular":formularioCelular})
 
+#Editar-----------------------------------------------------------
+class CelularModificar(UpdateView):
 
-def leerCelulares (request):
-    
-    celulares = Celulares.objects.all()
+    model=Celulares
+    success_url="../leerCelulares"
+    fields = ["marca","compania", "conectividad", "memoria", "precio"]
 
-    contexto = {"celulares":celulares}
-
-    return render (request, "AppTecno/leerCelulares.html", contexto)
-
+#Eliminar----------------------------------------------------------
 def eliminaCelular (request, numero_para_borrar):
 
     celularBorrar = Celulares.objects.get(id=numero_para_borrar)
@@ -255,6 +215,7 @@ def eliminaCelular (request, numero_para_borrar):
 
     return render(request, "AppTecno/leerCelulares.html", contexto)
 
+#Buscar-------------------------------------------------------------
 def buscarCelular(request):
 
     if request.GET["marca"]:
@@ -273,6 +234,18 @@ def buscarCelular(request):
 
     return render(request, "AppTecno/leerCelulares.html", contexto)
 
+#Vistas Televisores------------------------------------------------
+
+#Leer--------------------------------------------------------------
+def leerTelevisores (request):
+    
+    televisores = Televisores.objects.all()
+
+    contexto = {"televisores":televisores}
+
+    return render (request, "AppTecno/leerTelevisores.html", contexto)
+
+#Crear-------------------------------------------------------------
 def televisoresRegistro(request):
 
     if request.method == "POST":
@@ -301,15 +274,16 @@ def televisoresRegistro(request):
         formularioTelevisores = TelevisoresFormulario()
 
     return render(request, 'AppTecno/televisoresRegistro.html', {"formularioTelevisores":formularioTelevisores})
-    
-def leerTelevisores (request):
-    
-    televisores = Televisores.objects.all()
 
-    contexto = {"televisores":televisores}
+#Editar-----------------------------------------------------------
+class TelevisorModificar(UpdateView):
 
-    return render (request, "AppTecno/leerTelevisores.html", contexto)
+    model=Televisores
+    success_url="../leerTelevisores"
+    fields = ["marca","pulgadas", "resolusion", "precio"]
 
+
+#Eliminar-----------------------------------------------------------
 def eliminaTelevisor (request, numero_para_borrar):
 
     televisorBorrar = Televisores.objects.get(id=numero_para_borrar)
@@ -321,6 +295,7 @@ def eliminaTelevisor (request, numero_para_borrar):
 
     return render(request, "AppTecno/leerTelevisores.html", contexto)
 
+#Buscar-------------------------------------------------------------
 def buscarTelevisor(request):
 
     if request.GET["marca"]:

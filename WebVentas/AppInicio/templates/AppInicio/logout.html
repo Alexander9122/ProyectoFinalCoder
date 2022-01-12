@@ -13,21 +13,22 @@
 <li><a class="dropdown-item" href="{% url 'Login' %}">Login</a></li>
 <li><a class="dropdown-item" href="{% url 'EditarPerfil' %}">Editar Usuario</a></li>
 <li><a class="dropdown-item" href="{% url 'Logout' %}">Logout</a></li>
-<li><hr class="dropdown-divider"/><b>Productos</b></li>
-<li><a class="dropdown-item" href="{% url 'Laptops' %}">Laptops</a></li>
-<li><a class="dropdown-item" href="{% url 'LeerCelulares' %}">Celulares</a></li>
-<li><a class="dropdown-item" href="{% url 'LeerTelevisores' %}">Televisores</a></li>
+<li><hr class="dropdown-divider"/><b>Departamentos</b></li>
+<li><a class="dropdown-item" href="#!">Hogar</a></li>
+<li><a class="dropdown-item" href="{% url 'Tecnologia' %}">Tecnologia</a></li>
+<li><a class="dropdown-item" href="#!">Ropa</a></li>
 
 {%endblock%}
 
 {%block head%}
 
-<h1 class="display-4 fw-bolder">Tecnologia</h1>
-<p class="lead fw-normal text-white-50 mb-0">Laptops, Celulares y Televisores</p>
+<h1 class="display-4 fw-bolder">Mega Market</h1>
+<p class="lead fw-normal text-white-50 mb-0">Hogar, Tecnologia y Ropa</p>
 
 {%endblock%}
 
 {%block contenido%}
-
+    
+    <h3>Logout Correcto.</h3>
 
 {%endblock%}

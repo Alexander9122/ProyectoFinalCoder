@@ -28,7 +28,20 @@
 {%endblock%}
 
 {%block contenido%}
+    
+    <form action="" method="POST">
+        
+        {% csrf_token %}
+        
+        <table>
+        {{form.as_table}}
+        </table>
+        
+        <input type="submit" value="Iniciar Sesion">
 
-<h3>{{mensaje}}</h3>
+        <button>
+            <a href="{% url 'Registro' %}">Nuevo Registro</a>      
+        </button>
+    </form>
 
 {%endblock%}
