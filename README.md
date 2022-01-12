@@ -9,4 +9,4 @@ Las Apps fueron creadas por los siguientes participantes:
 AppInicio:Jorge Martinez Alexander
 AppHogar:Federico Arce Pillado
 AppTecno:Jorge Martinez Alexander
-AppInicio:Esteban Miño Vega
+AppRopa:Esteban Miño Vega
