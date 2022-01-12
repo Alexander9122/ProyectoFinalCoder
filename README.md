@@ -1,8 +1,12 @@
 Proyecto Final Coder 
 
-En la entrega parcial se creo una pagina web de venta de productos tecnologicos con 3 opciones Laptops, Celulares y Televisiones 
+En la entrega final del proyecto se unieron las apps creadas por cada participante del equipo quedando configurada una página de ventas con 3 departamentos (Hogar, Tecnología y Ropa).
 
-para entrar al admin se creo un usuario para revision
+Para la revisión del proyecto es necesario crear un usuario para acceder a los departamentos.
 
-USUARIO: Tutor
-CONTRASEÑA : Contrasena01
+Las Apps fueron creadas por los siguientes participantes:
+
+AppInicio:Jorge Martinez Alexander
+AppHogar:Federico Arce Pillado
+AppTecno:Jorge Martinez Alexander
+AppInicio:Esteban Miño Vega
