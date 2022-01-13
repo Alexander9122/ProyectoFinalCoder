@@ -10,3 +10,6 @@ AppInicio:Jorge Martinez Alexander
 AppHogar:Federico Arce Pillado
 AppTecno:Jorge Martinez Alexander
 AppRopa:Jorge Esteban Miño Vega
+
+Bases HTML: Federico Arce y Esteban Miño
+Conciliación : Jorge Martinez
